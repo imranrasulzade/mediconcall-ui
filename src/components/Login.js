@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/Login.css';
+import { useNavigate } from 'react-router-dom';
+import AccountService from '../services/AccountService';
+
 
 function Login() {
+  const navigate = useNavigate();
   const [loginReq, setLoginReq] = useState({
     username: '',
     password: ''
@@ -13,30 +17,44 @@ function Login() {
     const { name, value } = e.target;
     setLoginReq({ ...loginReq, [name]: value });
   };
+
+  const goToRegister = () => {
+    navigate('/register');
+  };
+
+  const goToAdminDashboard = () => {
+    navigate('/admin-dashboard');
+  };
+
+  const goToPatientDashboard = () => {
+    navigate('/patient-dashboard');
+  };
+
+  const goToDoctorDashboard = () => {
+    navigate('/doctor-dashboard');
+  };
+
+  // const handleForgotPassword = () => {
+  //   navigate('/forgot-password');
+  // };
   
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/account/sign-in', loginReq);
-
-      // Handle successful login
+      const response = await AccountService.signIn(loginReq);
       const { token } = response.data;
-      localStorage.setItem('token', token); // Store token in local storage
+      localStorage.setItem('token', token); 
+      // console.log(localStorage.getItem('token'));
 
-      console.log(localStorage.getItem('token'));
-
-      // Make request to get user info
-      // const userInfoResponse = await axios.get('http://localhost:8080/user/info', {
-      //   headers: {
-      //     Authorization: `Bearer ${token}`
-      //   }
-      // });
-
-      // console.log('User info:', userInfoResponse.data);
-      // Redirect or navigate to another page with user info
-      // Example: navigate('/dashboard'); // Use navigate from react-router or your routing library
+      // navigate("/admin-dashboard");
+      if(response.data.roles[0] == 'ROLE_PATIENT'){
+        goToPatientDashboard();
+      }else if(response.data.roles[0] == 'ROLE_DOCTOR'){
+        goToDoctorDashboard();
+      }else if(response.data.roles[0] == 'ROLE_ADMIN')
+        goToAdminDashboard();
     } catch (error) {
       console.error('Login failed:', error);
       setError('Login failed. Please check your credentials.');
@@ -57,7 +75,16 @@ function Login() {
           <input type="password" name="password" value={loginReq.password} onChange={handleInputChange} required />
         </div>
         <button type="submit">Login</button>
+
       </form>
+      <br></br>
+      <button className='register-button' onClick={goToRegister}>Register - New Account</button>
+      <br></br>
+      <br></br>
+      <a href="forgot-password">Forgot password</a>
+
+
+
     </div>
   );
 }

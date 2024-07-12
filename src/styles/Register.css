@@ -1,6 +1,9 @@
 .register-container {
     max-width: 400px;
-    margin: auto;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
