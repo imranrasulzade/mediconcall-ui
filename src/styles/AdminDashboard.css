@@ -1,4 +1,5 @@
 .dashboard-container {
+  font-family: Arial, sans-serif;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -8,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #007bff;
+  background-color: #333;
   padding: 10px 20px;
   color: white;
 }
@@ -50,10 +51,20 @@
 }
 
 .user-info {
+  display: flex;
+  align-items: center;
   margin-top: 20px;
 }
 
-.user-info p {
+.profile-photo {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px; /* Slightly rounded corners */
+  margin-right: 20px;
+}
+
+.user-details p {
   margin: 5px 0;
 }
 

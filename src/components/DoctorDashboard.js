@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/DoctorDashboard.css';
+import UserService from '../services/UserService';
 
 function DoctorDashboard() {
     const navigate = useNavigate();
@@ -13,11 +15,7 @@ function DoctorDashboard() {
 
             if (token) {
                 try {
-                    const userInfoResponse = await axios.get('http://localhost:8080/user/info', {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    });
+                    const userInfoResponse = await UserService.getUserInfo(token);
 
                     setUser(userInfoResponse.data);
                 } catch (error) {
@@ -51,7 +49,7 @@ function DoctorDashboard() {
                     <a href="/admin-dashboard">Doctor Dashboard</a>
                     <a href="/profile">Profile</a>
                     <a href="/settings">Settings</a>
-                    <a href="/medical-records">Medical-records</a>
+                    <a href="/medical-records">Medical Records</a>
                 </div>
                 <div className="nav-right">
                     <span>{user.username}</span>
@@ -62,12 +60,14 @@ function DoctorDashboard() {
                 <h2>Welcome, {user.name} {user.surname}!</h2>
                 {error && <div className="error-message">{error}</div>}
                 <div className="user-info">
-                    <p><strong>Username:</strong> {user.username}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Phone:</strong> {user.phone}</p>
-                    <p><strong>Birthday:</strong> {user.birthday}</p>
-                    <p><strong>Address:</strong> {user.address}</p>
-                    {/* Add more user info fields as needed */}
+                    <img src={user.photoUrl || process.env.PUBLIC_URL + '/image.png'} alt={`${user.name} ${user.surname}`} className="profile-photo" />
+                    <div className="user-details">
+                        <p><strong>Username:</strong> {user.username}</p>
+                        <p><strong>Email:</strong> {user.email}</p>
+                        <p><strong>Phone:</strong> {user.phone}</p>
+                        <p><strong>Birthday:</strong> {user.birthday}</p>
+                        <p><strong>Address:</strong> {user.address}</p>
+                    </div>
                 </div>
             </div>
         </div>

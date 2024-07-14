@@ -45,7 +45,9 @@ function Login() {
     try {
       const response = await AccountService.signIn(loginReq);
       const { token } = response.data;
+      const { username } = response.data;
       localStorage.setItem('token', token); 
+      localStorage.setItem('username', username);
       // console.log(localStorage.getItem('token'));
 
       // navigate("/admin-dashboard");
