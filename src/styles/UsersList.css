@@ -163,3 +163,11 @@ table th, table td {
 .role {
     font-weight: bold;
 }
+
+.usernum {
+    text-align : center; 
+}
+
+.rating {
+    text-align: center;
+}

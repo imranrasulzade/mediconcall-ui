@@ -42,6 +42,12 @@ function DoctorDashboard() {
         return <div>Loading...</div>;
     }
 
+    if(user) {
+        if (user.role !== 'DOCTOR') {
+            goToLogin();
+        }
+    }
+
     return (
         <div className="dashboard-container">
             <div className="navbar">

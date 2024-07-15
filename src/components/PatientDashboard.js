@@ -42,6 +42,12 @@ function PatientDashboard() {
         return <div>Loading...</div>;
     }
 
+    if(user) {
+        if (user.role !== 'PATIENT') {
+            goToLogin();
+        }
+    }
+
     return (
         <div className="dashboard-container">
             <div className="navbar">

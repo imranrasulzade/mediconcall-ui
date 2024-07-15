@@ -11,24 +11,26 @@ class DoctorService {
       })
   }
 
-  updateDoctor(doctor) {
-    return axios.put(DOCTOR_API_BASE_URL + "/edit", doctor)
-  }
+  // updateDoctor(doctor) {
+  //   return axios.put(DOCTOR_API_BASE_URL + "/edit", doctor)
+  // }
 
-  getDoctorInfo() {
-    return axios.get(DOCTOR_API_BASE_URL + "/info");
-  }
+  // getDoctorInfo() {
+  //   return axios.get(DOCTOR_API_BASE_URL + "/info");
+  // }
 
-  getDoctorById(id) {
-    return axios.get(DOCTOR_API_BASE_URL + "/patient/doctor/" + id);
-  }
+  // getDoctorById(id) {
+  //   return axios.get(DOCTOR_API_BASE_URL + "/patient/doctor/" + id);
+  // }
 
-  getDoctorByName(name) {
-    return axios.get(DOCTOR_API_BASE_URL + "/patient/doctor-name/" + name);
-  }
+  // getDoctorByName(name) {
+  //   return axios.get(DOCTOR_API_BASE_URL + "/patient/doctor-name/" + name);
+  // }
 
-  getDoctors() {
-    return axios.get(DOCTOR_API_BASE_URL + "/admin/doctors");
+  getDoctorsForAdmin(token) {
+    return axios.get(DOCTOR_API_BASE_URL + "/admin/doctors", {
+      headers: { 'Authorization': `Bearer ${token}` }
+  });
   }
 
   getDoctorByIdForAdmin(id) {

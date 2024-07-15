@@ -42,11 +42,17 @@ function AdminDashboard() {
         return <div>Loading...</div>;
     }
 
+    if(user) {
+        if (user.role !== 'ADMIN') {
+            goToLogin();
+        }
+    }
+
     return (
         <div className="dashboard-container">
             <div className="navbar">
                 <div className="nav-left">
-                    <a href="/admin-dashboard">Admin Dashboard</a>
+                    <a href="/admin-dashboard" className="active">Admin Dashboard</a>
                     <a href="/profile">Profile</a>
                     <a href="/settings">Settings</a>
                     <a href="/all-reservations">Reservations</a>
