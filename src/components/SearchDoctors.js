@@ -73,13 +73,13 @@ function SearchDoctor() {
             try {
                 const params = {
                     page: page,
-                    size,
+                    size
                 };
 
                 if (name) params.name = name;
                 if (specialty) params.specialty = specialty;
 
-                const response = await axios.get('http://localhost:8080/doctor/patient/search-doctor', {
+                const response = await axios.get('http://localhost:8080/doctor/patient/search', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
