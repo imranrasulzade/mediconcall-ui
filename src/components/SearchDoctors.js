@@ -39,7 +39,7 @@ function SearchDoctor() {
             
             if (token) {
                 try {
-                    const response = await axios.get('http://localhost:8080/doctor/patient/search-doctor', {
+                    const response = await axios.get('http://localhost:8080/doctor/patient/search', {
                         headers: {
                             Authorization: `Bearer ${token}`
                         },
