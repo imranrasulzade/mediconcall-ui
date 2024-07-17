@@ -1,0 +1,139 @@
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .nav-left a {
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav-left a:hover {
+    text-decoration: underline;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-right button {
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .nav-right button:hover {
+    background-color: #e60000;
+  }
+  
+  .active {
+    background-color: #4CAF50;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .search-container label {
+    margin-right: 10px;
+    color: #333;
+  }
+  
+  .search-container select,
+  .search-container input {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-container button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-container button:hover {
+    background-color: #555;
+  }
+  
+  .doctors-list {
+    margin-top: 20px;
+  }
+  
+  .doctor-card {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .doctor-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+  .doctor-info {
+    flex: 1;
+  }
+  
+  .doctor-info p {
+    margin: 5px 0;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #555;
+  }
+  
+  .pagination .active {
+    background-color: #4CAF50;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

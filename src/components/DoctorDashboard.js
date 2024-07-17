@@ -52,7 +52,7 @@ function DoctorDashboard() {
         <div className="dashboard-container">
             <div className="navbar">
                 <div className="nav-left">
-                    <a href="/admin-dashboard">Doctor Dashboard</a>
+                    <a href="/admin-dashboard" className="active">Doctor Dashboard</a>
                     <a href="/profile">Profile</a>
                     <a href="/settings">Settings</a>
                     <a href="/medical-records">Medical Records</a>

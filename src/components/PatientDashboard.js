@@ -52,10 +52,11 @@ function PatientDashboard() {
         <div className="dashboard-container">
             <div className="navbar">
                 <div className="nav-left">
-                    <a href="/patient-dashboard">Patient Dashboard</a>
+                    <a href="/patient-dashboard" className="active">Patient Dashboard</a>
                     <a href="/profile">Profile</a>
                     <a href="/settings">Settings</a>
                     <a href="/payments">Payments</a>
+                    <a href="/search-doctors">Doctors</a>
                 </div>
                 <div className="nav-right">
                     <span>{user.username}</span>

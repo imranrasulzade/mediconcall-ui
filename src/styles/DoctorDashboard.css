@@ -76,4 +76,8 @@
     color: red;
     margin-top: 10px;
   }
+
+  .active {
+    background-color: #4CAF50;
+  }
   
