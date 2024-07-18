@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/SearchDoctor.css';
+import DoctorService from '../services/DoctorService';
 
 function SearchDoctor() {
     const navigate = useNavigate();
@@ -13,16 +14,13 @@ function SearchDoctor() {
     const [name, setName] = useState('');
     const [specialties, setSpecialties] = useState([]);
     const [error, setError] = useState('');
+    const username = localStorage.getItem("username");
 
     useEffect(() => {
         const fetchSpecialties = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await axios.get('http://localhost:8080/doctor/specialties', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const response = await DoctorService.getSpecialities(token);
                 setSpecialties(response.data || []);
             } catch (error) {
                 console.error('Error fetching specialties:', error);
@@ -39,15 +37,7 @@ function SearchDoctor() {
             
             if (token) {
                 try {
-                    const response = await axios.get('http://localhost:8080/doctor/patient/search', {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        },
-                        params: {
-                            page: page,
-                            size
-                        }
-                    });
+                    const response = await DoctorService.fetchDoctors(token, page);
                     
                     if (response.data && response.data.data) {
                         setDoctors(response.data.data);
@@ -79,12 +69,7 @@ function SearchDoctor() {
                 if (name) params.name = name;
                 if (specialty) params.specialty = specialty;
 
-                const response = await axios.get('http://localhost:8080/doctor/patient/search', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    },
-                    params
-                });
+                const response = await DoctorService.handleSearch(token, params);
 
                 if (response.data && response.data.data) {
                     setDoctors(response.data.data);
@@ -120,6 +105,7 @@ function SearchDoctor() {
                     <a href="/search-doctors" className="active">Doctors</a>
                 </div>
                 <div className="nav-right">
+                <span>{username}</span>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             </div>
