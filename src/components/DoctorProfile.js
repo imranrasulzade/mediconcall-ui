@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import DoctorService from '../services/DoctorService';
 import '../styles/DoctorProfile.css';
 import axios from 'axios';
+import ContactService from '../services/ContactService';
 
 function DoctorProfile() {
     const { doctorId } = useParams();
@@ -26,9 +27,7 @@ function DoctorProfile() {
         const fetchConnectionStatus = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await axios.get(`http://localhost:8080/contact/patient/check?doctorId=${doctorId}`, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
+                const response = await ContactService.getContact(token, doctorId);
                 setConnectionStatus(response.data);
             } catch (error) {
                 console.error('Error fetching connection status:', error);
@@ -42,9 +41,7 @@ function DoctorProfile() {
     const handleRequestConnection = async () => {
         const token = localStorage.getItem('token');
         try {
-            await axios.post(`http://localhost:8080/contact/patient/request?doctorId=${doctorId}`, {}, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
+            await ContactService.sendRequest(token, doctorId);
             setConnectionStatus(0); // Set status to pending
         } catch (error) {
             console.error('Error requesting connection:', error);
@@ -54,9 +51,7 @@ function DoctorProfile() {
     const handleDeleteConnection = async () => {
         const token = localStorage.getItem('token');
         try {
-            await axios.delete(`http://localhost:8080/contact/patient?doctorId=${doctorId}`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
+            await ContactService.deleteConnection(token, doctorId);
             setConnectionStatus(-1); // Set status to not connected
             window.location.reload(); // Reload the page
         } catch (error) {
