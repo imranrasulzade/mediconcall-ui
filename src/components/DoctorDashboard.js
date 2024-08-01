@@ -56,6 +56,8 @@ function DoctorDashboard() {
                     <a href="/profile">Profile</a>
                     <a href="/settings">Settings</a>
                     <a href="/medical-records">Medical Records</a>
+                    <a href="/contacts">Contacts</a>
+
                 </div>
                 <div className="nav-right">
                     <span>{user.username}</span>

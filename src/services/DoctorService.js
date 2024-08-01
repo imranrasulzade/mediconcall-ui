@@ -53,6 +53,13 @@ class DoctorService {
     return axios.get(DOCTOR_API_BASE_URL + "/admin/doctor/" + id);
   }
 
+  getDoctorById (token, doctorId) {
+    const response = axios.get(DOCTOR_API_BASE_URL + "/patient/doctor?id=" + doctorId, {
+        headers: { Authorization: `Bearer ${token}` }
+    });
+    return response;
+}
+
 }
 
 export default new DoctorService();

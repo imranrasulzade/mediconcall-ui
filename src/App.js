@@ -14,6 +14,7 @@ import RecoveryPassword from './components/RecoveryPassword';
 import UsersList from './components/UsersList';
 import DoctorList from './components/DoctorList';
 import SearchDoctor from './components/SearchDoctors';
+import DoctorProfile from './components/DoctorProfile';
 // import Profile from './components/Profile';
 // import Settings from './components/Settings';
 
@@ -39,6 +40,8 @@ function App() {
           <Route path="/users-list" element={<UsersList />} />
           <Route path="/doctors" element={<DoctorList />} />
           <Route path="/search-doctors" element={< SearchDoctor/>} />
+          <Route path="/doctor-profile/:doctorId" element={< DoctorProfile/>} />
+
 
 
 

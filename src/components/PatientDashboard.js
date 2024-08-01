@@ -56,6 +56,7 @@ function PatientDashboard() {
                     <a href="/profile">Profile</a>
                     <a href="/settings">Settings</a>
                     <a href="/payments">Payments</a>
+                    <a href="/contacts">Contacts</a>
                     <a href="/search-doctors">Doctors</a>
                 </div>
                 <div className="nav-right">

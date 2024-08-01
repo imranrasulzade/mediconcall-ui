@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/SearchDoctor.css';
 import DoctorService from '../services/DoctorService';
@@ -94,6 +93,10 @@ function SearchDoctor() {
         navigate('/');
     };
 
+    const handleDoctorDetails = (doctorId) => {
+        navigate(`/doctor-profile/${doctorId}`);
+    };
+
     return (
         <div className="dashboard-container">
             <div className="navbar">
@@ -102,10 +105,11 @@ function SearchDoctor() {
                     <a href="/profile">Profile</a>
                     <a href="/settings">Settings</a>
                     <a href="/payments">Payments</a>
+                    <a href="/contacts">Contacts</a>
                     <a href="/search-doctors" className="active">Doctors</a>
                 </div>
                 <div className="nav-right">
-                <span>{username}</span>
+                    <span>{username}</span>
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             </div>
@@ -125,12 +129,12 @@ function SearchDoctor() {
                 {doctors.length > 0 ? (
                     doctors.map((doctor, index) => (
                         <div key={index} className="doctor-card">
-                            <img src={doctor.photoUrl || process.env.PUBLIC_URL + '/default-doctor.png'} alt={`${doctor.name} ${doctor.surname}`} className="doctor-photo" />
+                            <img src={doctor.photoUrl || process.env.PUBLIC_URL + '/default-doctor.png'} alt={`${doctor.name} ${doctor.surname}`} className="list-doctor-photo" />
                             <div className="doctor-info">
                                 <p><strong>{doctor.academicTitle} {doctor.name} {doctor.surname}</strong></p>
                                 <p>{doctor.specialty}</p>
                                 <p>About: {doctor.info}</p>
-                                <a href="#">read more...</a>
+                                <a href="" onClick={() => handleDoctorDetails(doctor.doctorId)}>read more...</a>
                             </div>
                         </div>
                     ))

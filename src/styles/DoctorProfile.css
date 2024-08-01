@@ -1,0 +1,125 @@
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+.nav-left a {
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-left a:hover {
+    text-decoration: underline;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right button {
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nav-right button:hover {
+    background-color: #e60000;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.doctor-profile-container {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.doctor-photo {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.doctor-details {
+    flex: 1;
+}
+
+.doctor-details p {
+    margin: 5px 0;
+}
+
+.doctor-details .rating-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 0 35%;
+}
+
+.doctor-details .rating-container span {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.doctor-details .rating {
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 5px;
+    margin-left: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.doctor-details .rating .rating-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    border-radius: 5px 0 0 5px;
+    transition: width 0.3s ease-in-out;
+}
+
+
+.doctor-details button {
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 10px 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.doctor-details button:hover {
+    background-color: #555;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
